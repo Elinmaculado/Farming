@@ -19,4 +19,9 @@ public class Land : MonoBehaviour
         else
             topPart.SetActive(false);
     }
+
+    public void Interaction()
+    {
+        Debug.Log("Seeds planted");
+    }
 }

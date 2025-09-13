@@ -46,4 +46,9 @@ public class GroundInteractor : MonoBehaviour
         selectedLand = land;
         land.isSelected = true;
     }
+
+    public void GroundInteraction()
+    {
+        selectedLand.Interaction();
+    }
 }

@@ -5,12 +5,18 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("Input system")]
     private UserInput playerInput;
     private InputAction move;
     private Vector2 moveInput;
     private CharacterController controller;
+    
+    [Header("Movement")]
     public float speed;
     public float sprintSpeed;
+    
+    [Header("Interaction")]
+    GroundInteractor groundInteractor;
     
     private void Awake()
     {
@@ -22,11 +28,14 @@ public class PlayerController : MonoBehaviour
     {
         playerInput.Control.Enable();
         controller = GetComponent<CharacterController>();
+        groundInteractor = GetComponentInChildren<GroundInteractor>();
     }
 
     private void Update()
     {
         Move();
+        
+        Interact();
     }
 
     void Move()
@@ -45,6 +54,14 @@ public class PlayerController : MonoBehaviour
         else
         {
             controller.Move(movement * Time.deltaTime * speed);
+        }
+    }
+
+    public void Interact()
+    {
+        if (playerInput.Control.Interact.WasPressedThisFrame())
+        {
+            groundInteractor.GroundInteraction();
         }
     }
 }
