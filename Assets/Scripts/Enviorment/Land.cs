@@ -1,13 +1,14 @@
 using System;
 using UnityEngine;
 
-public class Land : MonoBehaviour
+public class Land : MonoBehaviour, IInteractable
 {
     public GameObject topPart;
     public bool isSelected = false;
-
+    public LandState state;
     private void Start()
     {
+        state = LandState.Normal;
         topPart.SetActive(false);
     }
 
@@ -22,6 +23,34 @@ public class Land : MonoBehaviour
 
     public void Interaction()
     {
-        Debug.Log("Seeds planted");
     }
+
+    public void Interact()
+    {
+        Debug.Log($"Previous state: {state}");
+        if (state == LandState.Normal)
+        {
+            Debug.Log("Seeds planted");
+            state = LandState.Planted;
+        }
+        else if (state == LandState.Planted)
+        {
+            Debug.Log("Seeds watered");
+            state = LandState.Watered;
+        }
+        else if (state == LandState.Watered)
+        {
+            Debug.Log("Now we wait");
+        }
+        Debug.Log($"Ner state: {state}");
+        
+        
+    }
+}
+
+public enum LandState
+{
+    Normal,
+    Planted,
+    Watered
 }

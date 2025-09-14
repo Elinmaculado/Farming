@@ -7,7 +7,6 @@ public class PlayerController : MonoBehaviour
 {
     [Header("Input system")]
     private UserInput playerInput;
-    private InputAction move;
     private Vector2 moveInput;
     private CharacterController controller;
     
@@ -34,8 +33,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         Move();
-        
-        Interact();
+        Interaction();
     }
 
     void Move()
@@ -57,11 +55,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void Interact()
+    private void Interaction()
     {
         if (playerInput.Control.Interact.WasPressedThisFrame())
         {
             groundInteractor.GroundInteraction();
         }
     }
+    
 }
