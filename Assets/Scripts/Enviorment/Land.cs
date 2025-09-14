@@ -6,10 +6,13 @@ public class Land : MonoBehaviour, IInteractable
     public GameObject topPart;
     public bool isSelected = false;
     public LandState state;
+
+    private MeshRenderer meshRenderer;
     private void Start()
     {
         state = LandState.Normal;
         topPart.SetActive(false);
+        meshRenderer = GetComponent<MeshRenderer>();
     }
 
     // Update is called once per frame
@@ -21,10 +24,6 @@ public class Land : MonoBehaviour, IInteractable
             topPart.SetActive(false);
     }
 
-    public void Interaction()
-    {
-    }
-
     public void Interact()
     {
         Debug.Log($"Previous state: {state}");
@@ -32,11 +31,13 @@ public class Land : MonoBehaviour, IInteractable
         {
             Debug.Log("Seeds planted");
             state = LandState.Planted;
+            meshRenderer.material.color = Color.green;
         }
         else if (state == LandState.Planted)
         {
             Debug.Log("Seeds watered");
             state = LandState.Watered;
+            meshRenderer.material.color = Color.blue;
         }
         else if (state == LandState.Watered)
         {

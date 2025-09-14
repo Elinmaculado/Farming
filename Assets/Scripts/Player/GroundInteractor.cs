@@ -7,8 +7,7 @@ public class GroundInteractor : MonoBehaviour
     {
         
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         Debug.DrawRay(transform.position, Vector3.down, Color.red);
@@ -29,7 +28,7 @@ public class GroundInteractor : MonoBehaviour
             SelectLand(land);
             return;
         }
-
+        
         if (selectedLand != null)
         {
             selectedLand.isSelected = false;
@@ -51,4 +50,5 @@ public class GroundInteractor : MonoBehaviour
     {
         selectedLand.Interact();
     }
+    
 }
