@@ -3,9 +3,16 @@ using UnityEngine;
 
 public class Plant : MonoBehaviour
 {
+    public GameObject day1;
+    public GameObject day2;
+    public GameObject day3;
     public int days = 0;
+    public float timeToGrow = 1;
     void Start()
     {
+        day1.gameObject.SetActive(false);
+        day2.gameObject.SetActive(false);
+        day3.gameObject.SetActive(false);
         StartCoroutine(passTime());
     }
 
@@ -13,7 +20,7 @@ public class Plant : MonoBehaviour
     {
         while (days < 3)
         {
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(timeToGrow);
             Grow();
         }
     }
@@ -22,15 +29,15 @@ public class Plant : MonoBehaviour
         days++;
         if (days == 1)
         {
-            Debug.Log("dia 1 plantado");
+            day1.gameObject.SetActive(true);
         }
         else if (days == 2)
         {
-            Debug.Log("dia 2 creció");
+            day2.gameObject.SetActive(true);
         }
         else
         {
-            Debug.Log("dia 3 listo para recoger");
+            day3.gameObject.SetActive(true);
         }
     }
 }

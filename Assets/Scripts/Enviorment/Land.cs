@@ -6,8 +6,10 @@ public class Land : MonoBehaviour, IInteractable
     public GameObject topPart;
     public bool isSelected = false;
     public LandState state;
+    public Transform plantSpawnLocation;
+    public GameObject plantPrefab;
 
-    private MeshRenderer meshRenderer;
+private MeshRenderer meshRenderer;
     private void Start()
     {
         state = LandState.Normal;
@@ -38,6 +40,7 @@ public class Land : MonoBehaviour, IInteractable
             Debug.Log("Seeds watered");
             state = LandState.Watered;
             meshRenderer.material.color = Color.blue;
+            spawnPlant();
         }
         else if (state == LandState.Watered)
         {
@@ -46,6 +49,11 @@ public class Land : MonoBehaviour, IInteractable
         Debug.Log($"Ner state: {state}");
         
         
+    }
+
+    public void spawnPlant()
+    {
+        Instantiate(plantPrefab, plantSpawnLocation.position, plantSpawnLocation.rotation);
     }
 }
 

@@ -3,10 +3,6 @@ using UnityEngine;
 public class GroundInteractor : MonoBehaviour
 {
     Land selectedLand = null;
-    void Start()
-    {
-        
-    }
     
     void Update()
     {
