@@ -8,6 +8,7 @@ public class Land : MonoBehaviour, IInteractable
     public LandState state;
     public Transform plantSpawnLocation;
     public GameObject plantPrefab;
+    private Color startingColor;
 
 private MeshRenderer meshRenderer;
     private void Start()
@@ -15,6 +16,7 @@ private MeshRenderer meshRenderer;
         state = LandState.Normal;
         topPart.SetActive(false);
         meshRenderer = GetComponent<MeshRenderer>();
+        startingColor = meshRenderer.material.color;
     }
 
     // Update is called once per frame
@@ -53,9 +55,16 @@ private MeshRenderer meshRenderer;
 
     public void spawnPlant()
     {
-        Instantiate(plantPrefab, plantSpawnLocation.position, plantSpawnLocation.rotation);
+        Instantiate(plantPrefab, plantSpawnLocation.position, plantSpawnLocation.rotation, this.transform);
+    }
+
+    public void ResetLand()
+    {
+        state = LandState.Normal;
+        meshRenderer.material.color = startingColor;
     }
 }
+
 
 public enum LandState
 {
