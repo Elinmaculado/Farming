@@ -9,20 +9,22 @@ public class Land : MonoBehaviour, IInteractable
     public Transform plantSpawnLocation;
     public GameObject plantPrefab;
     private Color startingColor;
-
-private MeshRenderer meshRenderer;
+    private MeshRenderer meshRenderer;
+    
+    
+    public UI ui;
     private void Start()
     {
+        ui = FindFirstObjectByType<UI>();
         state = LandState.Normal;
         topPart.SetActive(false);
         meshRenderer = GetComponent<MeshRenderer>();
         startingColor = meshRenderer.material.color;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if(isSelected)
+        if(isSelected && state != LandState.Watered)
             topPart.SetActive(true);
         else
             topPart.SetActive(false);
@@ -41,6 +43,7 @@ private MeshRenderer meshRenderer;
         {
             Debug.Log("Seeds watered");
             state = LandState.Watered;
+            ui.BeginQTE();
             meshRenderer.material.color = Color.blue;
             spawnPlant();
         }
