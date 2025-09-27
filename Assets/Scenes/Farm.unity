@@ -660,6 +660,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dda6179e7179544b97ea8222093cbdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UI
+  activeLand: {fileID: 0}
   steps: 0
   buttons: []
 --- !u!1 &1448108249
@@ -680,7 +681,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1448108250
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1332,7 +1333,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2043739022
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1477,7 +1478,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2141152682
 RectTransform:
   m_ObjectHideFlags: 0
