@@ -32,26 +32,24 @@ public class Land : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        Debug.Log($"Previous state: {state}");
+        // Debug.Log($"Previous state: {state}");
         if (state == LandState.Normal)
         {
-            Debug.Log("Seeds planted");
             state = LandState.Planted;
             meshRenderer.material.color = Color.green;
         }
         else if (state == LandState.Planted)
         {
-            Debug.Log("Seeds watered");
             state = LandState.Watered;
-            ui.BeginQTE();
             meshRenderer.material.color = Color.blue;
-            spawnPlant();
+            ui.BeginQTE(this);
+            //spawnPlant();
         }
         else if (state == LandState.Watered)
         {
             Debug.Log("Now we wait");
         }
-        Debug.Log($"Ner state: {state}");
+        // Debug.Log($"Ner state: {state}");
         
         
     }

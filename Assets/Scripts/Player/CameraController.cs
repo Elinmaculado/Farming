@@ -9,7 +9,7 @@ public class CameraController : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        player = FindObjectOfType<PlayerController>().transform;
+        player = FindFirstObjectByType<PlayerController>().transform;
     }
 
     // Update is called once per frame

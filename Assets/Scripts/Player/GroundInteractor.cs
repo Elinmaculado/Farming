@@ -26,7 +26,7 @@ public class GroundInteractor : MonoBehaviour
     void OnInteractableHit(RaycastHit hit)
     {
         Collider other = hit.collider;
-        Debug.Log(other.tag);
+        // Debug.Log(other.tag);
 
         IInteractable interactable = other.GetComponent<IInteractable>();
         if (interactable != null)
