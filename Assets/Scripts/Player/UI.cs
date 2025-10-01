@@ -5,6 +5,7 @@ public class UI : MonoBehaviour
 {
     public static UI instance;
     public Land activeLand;
+    public PlayerController controller;
 
     [Header("quick time events")] 
     public int steps;
@@ -18,7 +19,7 @@ public class UI : MonoBehaviour
 
     private void Start()
     {
-        
+        controller = FindFirstObjectByType<PlayerController>();
         buttons = GetComponentsInChildren<QTEButton>(true);
         foreach (QTEButton button in buttons)
         {
@@ -28,6 +29,7 @@ public class UI : MonoBehaviour
 
     public void BeginQTE(Land land)
     {
+        controller.enabled = false;
         activeLand = land;
         foreach (QTEButton button in buttons)
         {
